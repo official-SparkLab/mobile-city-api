@@ -26,6 +26,13 @@ class BrandController extends Controller
      */
     public function store(Request $request)
     {
+        $check=Brand::where([
+            ['brand_name','=',$request->brand_name],
+
+        ])->first();
+
+        if(!$check)
+        {
         $post=new Brand;
         $post->brand_name=$request->brand_name;
         $post->description=$request->description;
@@ -35,6 +42,14 @@ class BrandController extends Controller
             'status' => 'Success',
             'data' => Brand::get()
         ]);
+    }
+    else{
+        return response()->json([
+            'message' => 'Brand Already Exists',
+            'status' => 'Failed',
+            'data' => Brand::get()
+        ]);
+    }
     }
 
     /**

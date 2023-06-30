@@ -24,6 +24,12 @@ class ColorController extends Controller
      */
     public function store(Request $request)
     {
+
+        $check=Color::where([
+            ['color_name','=',$request->color_name],
+            ['brand_name','=',$request->brand_name],
+
+        ])->first();
         $save=new Color();
         $save->brand_name=$request->brand_name;
         $save->color_name=$request->color_name;

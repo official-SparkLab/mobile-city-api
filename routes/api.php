@@ -5,6 +5,11 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\ColorController;
 use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\PurchaseDetailsController;
+use App\Http\Controllers\PurchaseItemsController;
+
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -40,3 +45,16 @@ Route::post('/save_customer',[CustomerController::class,'store']);
 Route::get('/get_all_customer',[CustomerController::class,'index']);
 Route::get('/get_customer/{customer}',[CustomerController::class,'show']);
 Route::delete('/delete_customer/{customer}',[CustomerController::class,'destroy']);
+
+
+//Purchase Details API
+Route::post('/purcahse_details',[PurchaseDetailsController::class,'store']);    
+Route::get('/get_all_purchaseDetails',[PurchaseDetailsController::class,'index']);    
+Route::get('/get_purchaseDetails/{purchase_Details}',[PurchaseDetailsController::class,'show']);    
+
+
+//Purchase Items API
+Route::post('/purchase_items',[PurchaseItemsController::class,'store']); 
+Route::get('/get_all_purchaseItems',[PurchaseItemsController::class,'index']); 
+Route::get('/get_purchaseItems/{purchase_Items}',[PurchaseItemsController::class,'show']); 
+
