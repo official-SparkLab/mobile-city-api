@@ -48,7 +48,7 @@ Route::delete('/delete_customer/{customer}',[CustomerController::class,'destroy'
 
 
 //Purchase Details API
-Route::post('/purcahse_details',[PurchaseDetailsController::class,'store']);    
+Route::post('/purchase_details',[PurchaseDetailsController::class,'store']);    
 Route::get('/get_all_purchaseDetails',[PurchaseDetailsController::class,'index']);    
 Route::get('/get_purchaseDetails/{purchase_Details}',[PurchaseDetailsController::class,'show']);    
 
