@@ -7,9 +7,9 @@ use App\Http\Controllers\ColorController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\PurchaseDetailsController;
 use App\Http\Controllers\PurchaseItemsController;
-
-
-
+use App\Http\Controllers\SalesDetailsController;
+use App\Http\Controllers\SalesItemsController;
+use App\Http\Controllers\BrandDetailsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -58,3 +58,17 @@ Route::post('/purchase_items',[PurchaseItemsController::class,'store']);
 Route::get('/get_all_purchaseItems',[PurchaseItemsController::class,'index']); 
 Route::get('/get_purchaseItems/{purchase_Items}',[PurchaseItemsController::class,'show']); 
 
+//Sales Detals API
+Route::post('/sales_details',[SalesDetailsController::class,'store']);
+Route::get('/get_all_salesDetails',[SalesDetailsController::class,'index']);
+Route::get('/get_salesDetails/{sales_Details}',[SalesDetailsController::class,'show']);
+
+//Sales Items API
+Route::post('/sales_items',[SalesItemsController::class,'store']);
+Route::get('/get_all_salesItems',[SalesItemsController::class,'index']);
+Route::get('/get_salesItems/{sales_items}',[SalesItemsController::class,'show']);
+
+//returnBrandDetails API
+Route::post('/returnBrand',[BrandDetailsController::class,'store']);
+Route::get('/get_all_returnBrand',[BrandDetailsController::class,'index']);
+Route::get('/get_returnBrand/{brand_details}',[BrandDetailsController::class,'show']);
