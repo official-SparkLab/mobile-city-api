@@ -28,7 +28,9 @@ class PurchaseDetailsController extends Controller
         $save->invoice_no=$request->invoice_no;
         $save->date=$request->date;
 
-        $save->supplier_id=$request->supplier_id;
+        $save->supplier_name=$request->supplier_name;
+        $save->mobile_no=$request->mobile_no;
+        $save->address=$request->address;
 
         $save->sub_total=$request->sub_total;
 

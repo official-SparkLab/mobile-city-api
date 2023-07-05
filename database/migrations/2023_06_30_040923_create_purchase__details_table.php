@@ -15,7 +15,11 @@ return new class extends Migration
             $table->id();
             $table->string('invoice_no');
             $table->string('date');
-            $table->string('supplier_id');
+            $table->string('supplier_name');
+            $table->string('mobile_no');
+
+            $table->string('address');
+
             $table->string('sub_total');
             $table->string('discount');
             $table->string('grand_total');

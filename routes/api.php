@@ -10,6 +10,8 @@ use App\Http\Controllers\PurchaseItemsController;
 use App\Http\Controllers\SalesDetailsController;
 use App\Http\Controllers\SalesItemsController;
 use App\Http\Controllers\BrandDetailsController;
+use App\Http\Controllers\ModelDetailsController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -72,3 +74,13 @@ Route::get('/get_salesItems/{sales_items}',[SalesItemsController::class,'show'])
 Route::post('/returnBrand',[BrandDetailsController::class,'store']);
 Route::get('/get_all_returnBrand',[BrandDetailsController::class,'index']);
 Route::get('/get_returnBrand/{brand_details}',[BrandDetailsController::class,'show']);
+
+
+//Model Details API
+Route::post('/save_model',[ModelDetailsController::class,'store']);
+Route::get('/get_all_models',[ModelDetailsController::class,'index']);
+Route::get('/get_models/{model_details}',[ModelDetailsController::class,'show']);
+Route::delete('/delete_model/{model_details}',[ModelDetailsController::class,'destroy']);
+
+
+
