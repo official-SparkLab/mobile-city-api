@@ -26,7 +26,7 @@ class PurchaseItemsController extends Controller
     {
         $save=new Purchase_Items;
         $save->invoice_no=$request->invoice_no;
-        $save->brand=$request->brand;
+        
         $save->model_name=$request->model_name;
 
         $save->imei=$request->imei;
@@ -34,7 +34,7 @@ class PurchaseItemsController extends Controller
         $save->purchase_price=$request->purchase_price;
 
         $save->sale_price=$request->sale_price;
-        $save->total=$request->total;
+      
 
         $save->save();
 
