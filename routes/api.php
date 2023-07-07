@@ -71,5 +71,7 @@ Route::get('/get_all_models',[ModelDetailsController::class,'index']);
 Route::get('/get_models/{model_details}',[ModelDetailsController::class,'show']);
 Route::delete('/delete_model/{model_details}',[ModelDetailsController::class,'destroy']);
 
+//Getting sales price based on imei
 
+Route::post('/get_salesPrice',[PurchaseItemsController::class,'getSalesPrice']);
 

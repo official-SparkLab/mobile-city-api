@@ -76,4 +76,18 @@ class PurchaseItemsController extends Controller
     {
         //
     }
+
+    public function getSalesPrice(Request $request)
+    {
+        $imei = $request->input('imei');
+        
+        $imei = Purchase_Items::where('imei', $imei)->first();
+        
+        if ($imei) {
+            $salesPrice = $imei->sale_price;
+            return response()->json(['message'=>'Fetch Successfull','sales_price' => $salesPrice]);
+        } else {
+            return response()->json(['message' => 'Product not found'], 404);
+        }
+    }
 }
