@@ -26,7 +26,7 @@ class BrandDetailsController extends Controller
     {
         $save=new brand_details;
         $save->invoice_no=$request->invoice_no;
-        $save->brand=$request->brand;
+        
         $save->model_name=$request->model_name;
 
         $save->imei=$request->imei;

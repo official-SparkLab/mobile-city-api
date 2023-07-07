@@ -14,11 +14,11 @@ return new class extends Migration
         Schema::create('brand_details', function (Blueprint $table) {
             $table->id();
             $table->string('invoice_no')->nullable();
-            $table->string('brand')->nullable();
+
             $table->string('model_name')->nullable();
             $table->string('imei')->nullable();
             $table->string('price')->nullable();
-           
+            
 
             $table->timestamps();
         });

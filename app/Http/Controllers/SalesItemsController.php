@@ -26,15 +26,13 @@ class SalesItemsController extends Controller
     {
         $save=new sales_items;
         $save->invoice_no=$request->invoice_no;
-        $save->brand=$request->brand;
+       
         $save->model_name=$request->model_name;
 
         $save->imei=$request->imei;
 
         $save->price=$request->price;
 
-        
-        $save->total=$request->total;
         $save->accessories=$request->accessories;
         $save->save();
 

@@ -28,7 +28,9 @@ class SalesDetailsController extends Controller
         $save->invoice_no=$request->invoice_no;
         $save->date=$request->date;
 
-        $save->customer_id=$request->customer_id;
+        $save->customer_name=$request->customer_name;
+        $save->mobile_no=$request->mobile_no;
+        $save->address=$request->address;
 
         $save->sub_total=$request->sub_total;
 
