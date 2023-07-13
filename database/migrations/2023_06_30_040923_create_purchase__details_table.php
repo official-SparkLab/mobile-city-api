@@ -21,8 +21,8 @@ return new class extends Migration
             $table->string('address');
 
             $table->string('sub_total');
-            $table->string('discount');
-            $table->string('grand_total');
+       
+            $table->string('balance_amount');
             $table->string('payable_amount');
             $table->string('payment_mode');
             $table->string('status')->default(1);
