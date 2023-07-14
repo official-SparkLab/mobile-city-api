@@ -34,9 +34,9 @@ class PurchaseDetailsController extends Controller
 
         $save->sub_total=$request->sub_total;
 
-        $save->discount=$request->discount;
+        $save->balance_amount=$request->balance_amount;
 
-        $save->grand_total=$request->grand_total;
+        
 
         $save->payable_amount=$request->payable_amount;
 
