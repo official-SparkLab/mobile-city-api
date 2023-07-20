@@ -67,16 +67,41 @@ class SalesDetailsController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Sales_Details $sales_Details)
+    public function update(Request $request, $invoice_no)
     {
-        //
+        $save=Sales_Details::where("invoice_no",$invoice_no)->first();
+        $save->date = $request->input('date');
+        $save->customer_name = $request->input('customer_name');
+        $save->mobile_no = $request->input('mobile_no');
+        $save->address = $request->input('address');
+        $save->sub_total = $request->input('sub_total');
+        $save->discount = $request->input('discount');
+        $save->grand_total = $request->input('grand_total');
+        $save->payable_amount = $request->input('payable_amount');
+        $save->payment_mode = $request->input('payment_mode');
+        $save->save();
+
+        return response()->json([
+            'message' => 'Sales Details Updated',
+            'status' => 'success',
+            'data' => Sales_Details::get()
+
+        ]);
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Sales_Details $sales_Details)
+    public function destroy($invoice_no)
     {
-        //
+        $delete=Sales_Details::where("invoice_no",$invoice_no)->first();
+        $delete->status=0;
+        $delete->save();
+
+        return response()->json([
+            "message"=>"Purchase Details deleted successfully",
+            "status"=>"success",
+            "data"=> Sales_Details::get()
+        ]);
     }
 }

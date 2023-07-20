@@ -64,9 +64,25 @@ class PurchaseItemsController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Purchase_Items $purchase_Items)
+    public function update(Request $request, Purchase_Items $purchase_Items,$invoice_no)
     {
-        //
+        $save=Purchase_Items::where("id",$purchase_Items->id)->where("invoice_no",$invoice_no)->first();
+
+        $save->model_name = $request->input('model_name');
+        $save->imei = $request->input('imei');
+        $save->purchase_price = $request->input('purchase_price');
+        $save->sale_price = $request->input('sale_price');
+      
+
+        $save->save();
+
+        return response()->json([
+            'message' => "Product Updated",
+            'status' => 'success',
+            'data' => Purchase_Items::get()
+
+        ]);
+
     }
 
     /**
@@ -74,7 +90,12 @@ class PurchaseItemsController extends Controller
      */
     public function destroy(Purchase_Items $purchase_Items)
     {
-        //
+        $purchase_Items->delete();
+        return response()->json([
+            'message' => 'Fetch Data Successfully',
+            'status' => 'success',
+            'data' =>Purchase_Items::get()
+        ]);
     }
 
     public function getSalesPrice(Request $request)

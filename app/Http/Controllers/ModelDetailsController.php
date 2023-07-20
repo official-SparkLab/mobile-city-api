@@ -58,7 +58,7 @@ class ModelDetailsController extends Controller
      */
     public function update(Request $request, model_details $model_details)
     {
-        //
+        
     }
 
     /**

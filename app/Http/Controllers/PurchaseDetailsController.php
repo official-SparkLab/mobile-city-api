@@ -68,16 +68,59 @@ class PurchaseDetailsController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, purchase_Details $purchase_Details)
+    public function update(Request $request, $invoice_no)
     {
-        
+       
+           
+
+            $save = Purchase_Details::where("invoice_no",$invoice_no)->first();
+            if($save)
+            {
+            $save->date = $request->input('date');    
+            $save->supplier_name = $request->input('supplier_name');
+            $save->mobile_no = $request->input('mobile_no');
+            $save->address = $request->input('address');
+            $save->sub_total = $request->input('sub_total');
+            $save->balance_amount = $request->input('balance_amount');
+            $save->payable_amount = $request->input('payable_amount');
+            $save->payment_mode = $request->input('payment_mode');
+    
+            $save->save();
+
+            return response()->json([
+                'message' => 'Purchase Details Updated',
+                'status' => 'success',
+                'data' => Purchase_Details::get()
+    
+            ]);
+        }
+        else{
+            return response()->json([
+                'message' => 'Invoice not found',
+                'status' => 'Failed',
+                'data' => ""
+    
+            ]);
+        }
+    
+
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(purchase_Details $purchase_Details)
+   
+    public function destroy($invoice_no)
     {
-        
+
+        $delete=Purchase_Details::findorFail($invoice_no);
+        $delete->status=0;
+        $delete->save();
+
+        return response()->json([
+            "message"=>"Purchase Details deleted successfully",
+            "status"=>"success",
+            "data"=> purchase_Details::get()
+        ]);
+
+
+     
     }
 }
