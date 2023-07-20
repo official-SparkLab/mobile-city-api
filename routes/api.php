@@ -64,6 +64,9 @@ Route::put('/update_salesDetails/{invoice_no}',[SalesDetailsController::class,'u
 Route::post('/sales_items',[SalesItemsController::class,'store']);
 Route::get('/get_all_salesItems',[SalesItemsController::class,'index']);
 Route::get('/get_salesItems/{sales_items}',[SalesItemsController::class,'show']);
+Route::delete('/delete_salesItems/{sales_items}',[SalesItemsController::class,'destroy']);
+Route::put('/update_salesItems/{sales_items}/{invoice_no}',[SalesItemsController::class,'update']);
+
 
 //returnBrandDetails API
 Route::post('/returnBrand',[BrandDetailsController::class,'store']);

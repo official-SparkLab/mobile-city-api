@@ -58,9 +58,21 @@ class SalesItemsController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, sales_items $sales_items)
+    public function update(Request $request, sales_items $sales_items,$invoice_no)
     {
-        //
+        $save=sales_items::where("id",$sales_items->id)->where("invoice_no",$invoice_no)->first();
+        $save->model_name = $request->input('model_name');
+        $save->imei = $request->input('imei');
+        $save->price = $request->input('price');
+        $save->accessories = $request->input('accessories');
+        $save->save();
+
+        return response()->json([
+            'message' => "Product Updated",
+            'status' => 'success',
+            'data' => sales_items::get()
+
+        ]);
     }
 
     /**
@@ -68,6 +80,14 @@ class SalesItemsController extends Controller
      */
     public function destroy(sales_items $sales_items)
     {
-        //
+
+        $sales_items->delete();
+        return response()->json([
+            'message' => "Product Deleted",
+            'status' => 'success',
+            'data' => sales_items::get()
+
+        ]);
+
     }
 }

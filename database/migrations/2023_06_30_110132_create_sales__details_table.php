@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('customer_name')->nullable();
             $table->string('mobile_no')->nullable();
             $table->string('address')->nullable();
-
+            
             $table->string('sub_total')->nullable();
             $table->string('discount')->nullable();
             $table->string('grand_total')->nullable();
