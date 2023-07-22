@@ -41,9 +41,10 @@ Route::delete('/delete_customer/{customer}',[CustomerController::class,'destroy'
 //Purchase Details API
 Route::post('/purchase_details',[PurchaseDetailsController::class,'store']);    
 Route::get('/get_all_purchaseDetails',[PurchaseDetailsController::class,'index']);    
-Route::get('/get_purchaseDetails/{purchase_Details}',[PurchaseDetailsController::class,'show']);   
+Route::get('/get_purchaseDetails/{invoice_no}',[PurchaseDetailsController::class,'show']);   
 Route::put('/delete_purchaseDetails/{invoice_no}',[PurchaseDetailsController::class,'destroy']); 
 Route::put('/update_purchaseDetails/{invoice_no}',[PurchaseDetailsController::class,'update']); 
+Route::get('/get_purchaseInvoice/{invoice_no}',[PurchaseDetailsController::class,'getInvoice']);   
 
 
 //Purchase Items API
@@ -56,9 +57,12 @@ Route::put('/update_purchaseItem/{purchase_Items}/{invoice_no}',[PurchaseItemsCo
 //Sales Detals API
 Route::post('/sales_details',[SalesDetailsController::class,'store']);
 Route::get('/get_all_salesDetails',[SalesDetailsController::class,'index']);
-Route::get('/get_salesDetails/{sales_Details}',[SalesDetailsController::class,'show']);
+Route::get('/get_salesDetails/{invoice_no}',[SalesDetailsController::class,'show']);
 Route::put('/delete_salesDetails/{invoice_no}',[SalesDetailsController::class,'destroy']); 
 Route::put('/update_salesDetails/{invoice_no}',[SalesDetailsController::class,'update']); 
+Route::get('/get_SalesInvoice/{invoice_no}',[SalesDetailsController::class,'getInvoice']);   
+
+
 
 //Sales Items API
 Route::post('/sales_items',[SalesItemsController::class,'store']);

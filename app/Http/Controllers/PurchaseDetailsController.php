@@ -56,12 +56,13 @@ class PurchaseDetailsController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(purchase_Details $purchase_Details)
+    public function show($invoice_no)
     {
+        $search=purchase_Details::where("invoice_no",$invoice_no);
         return response()->json([
             'message' => 'Fetch Successfully',
             'status' => 'success',
-            'data' =>$purchase_Details
+            'data' =>$search->get()
         ]);
     }
 
@@ -70,9 +71,7 @@ class PurchaseDetailsController extends Controller
      */
     public function update(Request $request, $invoice_no)
     {
-       
-           
-
+    
             $save = Purchase_Details::where("invoice_no",$invoice_no)->first();
             if($save)
             {
@@ -122,5 +121,17 @@ class PurchaseDetailsController extends Controller
 
 
      
+    }
+
+    public function getInvoice($invoice_no) {
+        $Invoice = purchase_Details::join('purchase__items', 'purchase__details.invoice_no', '=', 'purchase__items.invoice_no')
+                        ->where('purchase__details.invoice_no', $invoice_no)                
+                        ->select('purchase__details.*', 'purchase__items.*')
+                        ->get();
+        return response()->json([
+            'message'=>"Invoice Generated successfully",
+            'status'=>'success',
+            'data'=>$Invoice
+        ]);                
     }
 }

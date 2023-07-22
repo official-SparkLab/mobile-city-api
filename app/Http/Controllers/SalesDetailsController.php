@@ -55,12 +55,13 @@ class SalesDetailsController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Sales_Details $sales_Details)
+    public function show($invoice_no)
     {
+        $search=Sales_Details::where("invoice_no",$invoice_no);
         return response()->json([
             'message' =>'Fetch Successfully',
             'status' =>'Success',
-            'data' =>$sales_Details
+            'data' =>$search->get()
         ]);
     }
 
@@ -103,5 +104,16 @@ class SalesDetailsController extends Controller
             "status"=>"success",
             "data"=> Sales_Details::get()
         ]);
+    }
+    public function getInvoice($invoice_no) {
+        $Invoice = Sales_Details::join('sales_items', 'sales__details.invoice_no', '=', 'sales_items.invoice_no')
+                        ->where('sales__details.invoice_no', $invoice_no)                
+                        ->select('sales__details.*', 'sales_items.*')
+                        ->get();
+        return response()->json([
+            'message'=>"Invoice Generated successfully",
+            'status'=>'success',
+            'data'=>$Invoice
+        ]);                
     }
 }
