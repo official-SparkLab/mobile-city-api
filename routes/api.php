@@ -11,7 +11,7 @@ use App\Http\Controllers\SalesDetailsController;
 use App\Http\Controllers\SalesItemsController;
 use App\Http\Controllers\BrandDetailsController;
 use App\Http\Controllers\ModelDetailsController;
-
+use App\Http\Controllers\CreateUsersController;
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
@@ -87,4 +87,10 @@ Route::delete('/delete_model/{model_details}',[ModelDetailsController::class,'de
 //Getting sales price based on imei
 
 Route::post('/get_salesPrice',[PurchaseItemsController::class,'getSalesPrice']);
+
+//Users API
+Route::post('/createUser',[CreateUsersController::class,'store']);
+Route::get('/searchUsers',[CreateUsersController::class,'index']);
+Route::get('/searchUser/{create_Users}',[CreateUsersController::class,'show']);
+Route::delete('/deleteUser/{create_Users}',[CreateUsersController::class,'destroy']);
 
