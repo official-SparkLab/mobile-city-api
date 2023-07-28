@@ -42,6 +42,11 @@ class SalesDetailsController extends Controller
 
         $save->payment_mode=$request->payment_mode;
 
+        $save->payable_amount_2=$request->payable_amount_2;
+
+        $save->payment_mode_2=$request->payment_mode_2;
+
+
         $save->save();
 
         return response()->json([
@@ -80,6 +85,8 @@ class SalesDetailsController extends Controller
         $save->grand_total = $request->input('grand_total');
         $save->payable_amount = $request->input('payable_amount');
         $save->payment_mode = $request->input('payment_mode');
+        $save->payable_amount_2 = $request->input('payable_amount_2');
+        $save->payment_mode_2 = $request->input('payment_mode_2');
         $save->save();
 
         return response()->json([
