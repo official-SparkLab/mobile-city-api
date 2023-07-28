@@ -93,4 +93,6 @@ Route::post('/createUser',[CreateUsersController::class,'store']);
 Route::get('/searchUsers',[CreateUsersController::class,'index']);
 Route::get('/searchUser/{create_Users}',[CreateUsersController::class,'show']);
 Route::delete('/deleteUser/{create_Users}',[CreateUsersController::class,'destroy']);
+Route::put('/createUser/{id}',[CreateUsersController::class,'update']);
+
 
