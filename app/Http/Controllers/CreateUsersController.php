@@ -57,9 +57,29 @@ class CreateUsersController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Create_Users $create_Users)
+    public function update(Request $request, $id)
     {
-        //
+        {
+            $save=create_Users::where("id",$id)->first();
+            $save->full_name = $request->input('full_name');
+
+            $save->gender = $request->input('gender');
+
+            $save->contact = $request->input('contact');
+
+            $save->email = $request->input('email');
+
+            $save->password = $request->input('password');
+
+            $save->save();
+    
+            return response()->json([
+                'message' => 'User Updated',
+                'status' => 'success',
+                'data' => create_Users::get()
+    
+            ]);
+        }
     }
 
     /**
