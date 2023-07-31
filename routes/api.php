@@ -84,6 +84,8 @@ Route::post('/save_model',[ModelDetailsController::class,'store']);
 Route::get('/get_all_models',[ModelDetailsController::class,'index']);
 Route::get('/get_models/{model_details}',[ModelDetailsController::class,'show']);
 Route::delete('/delete_model/{model_details}',[ModelDetailsController::class,'destroy']);
+Route::put('/save_model/{id}',[ModelDetailsController::class,'update']);
+
 
 //Getting sales price based on imei
 
@@ -102,3 +104,4 @@ Route::post('/createEntry',[CashBookController::class,'store']);
 Route::get('/searchAllEntry',[CashBookController::class,'index']);
 Route::get('/searchSingleEntry/{cash_book}',[CashBookController::class,'show']);
 Route::delete('/deleteEntry/{cash_book}',[CashBookController::class,'destroy']);
+Route::put('/createEntry/{id}',[CashBookController::class,'update']);

@@ -1,5 +1,5 @@
 <?php
-
+ 
 namespace App\Http\Controllers;
 
 use App\Models\cash_book;
@@ -63,9 +63,32 @@ class CashBookController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, cash_book $cash_book)
+    public function update(Request $request, $id)
     {
-        // 
+        {
+            $save=cash_book::where("id",$id)->first();
+            $save->entry_name = $request->input('entry_name');
+
+            $save->date = $request->input('date');
+
+            $save->creadit_amount = $request->input('creadit_amount');
+
+            $save->debit_amount = $request->input('debit_amount');
+
+            $save->payment_mode = $request->input('payment_mode');
+
+            $save->note = $request->input('note');
+
+
+            $save->save();
+    
+            return response()->json([
+                'message' => 'Entry Updated Successfully',
+                'status' => 'success',
+                'data' => cash_book::get()
+    
+            ]);
+        }
     }
 
     /**
