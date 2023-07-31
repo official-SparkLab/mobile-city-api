@@ -56,9 +56,28 @@ class ModelDetailsController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, model_details $model_details)
+    public function update(Request $request, $id)
     {
-        
+        {
+            $save=model_details::where("id",$id)->first();
+            $save->model_name = $request->input('model_name');
+
+            $save->color_name = $request->input('color_name');
+
+            $save->opening_stock = $request->input('opening_stock');
+
+            $save->description = $request->input('description');
+
+
+            $save->save();
+    
+            return response()->json([
+                'message' => 'Model Updated Successfully',
+                'status' => 'success',
+                'data' => model_details::get()
+    
+            ]);
+        }
     }
 
     /**
