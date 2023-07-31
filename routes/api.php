@@ -12,6 +12,7 @@ use App\Http\Controllers\SalesItemsController;
 use App\Http\Controllers\BrandDetailsController;
 use App\Http\Controllers\ModelDetailsController;
 use App\Http\Controllers\CreateUsersController;
+use App\Http\Controllers\CashBookController;
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
