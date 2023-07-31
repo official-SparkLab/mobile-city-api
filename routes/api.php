@@ -96,3 +96,8 @@ Route::delete('/deleteUser/{create_Users}',[CreateUsersController::class,'destro
 Route::put('/createUser/{id}',[CreateUsersController::class,'update']);
 
 
+//Cash Book API
+Route::post('/createEntry',[CashBookController::class,'store']);
+Route::get('/searchAllEntry',[CashBookController::class,'index']);
+Route::get('/searchSingleEntry/{cash_book}',[CashBookController::class,'show']);
+Route::delete('/deleteEntry/{cash_book}',[CashBookController::class,'destroy']);
