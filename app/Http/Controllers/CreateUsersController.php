@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Create_Users;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+
 
 class CreateUsersController extends Controller
 {
