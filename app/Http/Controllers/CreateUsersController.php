@@ -96,4 +96,24 @@ class CreateUsersController extends Controller
         ]);
 
     }
+
+    public function login(Request $request)
+    {
+        $email = $request->input('email');
+        $password = $request->input('password');
+    
+        // Retrieve the user from the database based on the provided email
+        $user = DB::table('create_Users')->where('email', $email)->first();
+    
+        if ($user && $user->password === $password) {
+            // Password matches, so user is authenticated
+            return response()->json([
+                'name' => $user->full_name,
+                'message' => true,
+            ], 200);
+        } else {
+            // Invalid credentials, return unauthorized response
+            return response()->json(['message' => false], 401);
+        }
+    }
 }
