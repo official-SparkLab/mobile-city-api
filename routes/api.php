@@ -97,6 +97,7 @@ Route::get('/searchUsers',[CreateUsersController::class,'index']);
 Route::get('/searchUser/{create_Users}',[CreateUsersController::class,'show']);
 Route::delete('/deleteUser/{create_Users}',[CreateUsersController::class,'destroy']);
 Route::put('/createUser/{id}',[CreateUsersController::class,'update']);
+Route::post('/userLogin',[CreateUsersController::class,'login']);
 
 
 //Cash Book API
