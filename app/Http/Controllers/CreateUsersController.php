@@ -105,7 +105,7 @@ class CreateUsersController extends Controller
         $password = $request->input('password');
     
         // Retrieve the user from the database based on the provided email
-        $user = DB::table('create_Users')->where('email', $email)->first();
+        $user = DB::table('create__users')->where('email', $email)->first();
     
         if ($user && $user->password === $password) {
             // Password matches, so user is authenticated
