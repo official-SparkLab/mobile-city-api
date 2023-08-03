@@ -37,7 +37,7 @@ class PurchasePayableController extends Controller
 
         $save->pending_amount=$request->pending_amount;
 
-        $save->paid_amountate=$request->paid_amount;
+        $save->paid_amount=$request->paid_amount;
 
         $save->available_balance=$request->available_balance;
 
