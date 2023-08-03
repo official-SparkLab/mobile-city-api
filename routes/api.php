@@ -115,4 +115,5 @@ Route::post('/addPurchasePayable',[PurchasePayableController::class,'store']);
 Route::get('/searchAllPayables',[PurchasePayableController::class,'index']);
 Route::get('/searchSinglePayable/{purchase_payable}',[PurchasePayableController::class,'show']);
 Route::delete('/deletePayableEntry/{purchase_payable}',[PurchasePayableController::class,'destroy']);
+Route::put('/update_purchasePayable/{id}',[PurchasePayableController::class,'update']); 
 

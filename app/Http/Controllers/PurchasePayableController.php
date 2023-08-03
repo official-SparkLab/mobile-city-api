@@ -76,9 +76,39 @@ class PurchasePayableController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, purchase_payable $purchase_payable)
+    public function update(Request $request, $id)
     {
-        //
+        {
+            $save=purchase_payable::where("id",$id)->first();
+            $save->date = $request->input('date');
+
+            $save->supplier_name = $request->input('supplier_name');
+
+            $save->mobile_no = $request->input('mobile_no');
+
+            $save->address = $request->input('address');
+
+            $save->pending_amount = $request->input('pending_amount');
+
+            $save->paid_amount = $request->input('paid_amount');
+
+            $save->available_balance = $request->input('available_balance');
+
+            $save->payment_mode = $request->input('payment_mode');
+
+            $save->trx_no = $request->input('trx_no');
+
+
+
+            $save->save();
+    
+            return response()->json([
+                'message' => 'Entry Updated Successfully',
+                'status' => 'success',
+                'data' => purchase_payable::get()
+    
+            ]);
+        }
     }
 
     /**
