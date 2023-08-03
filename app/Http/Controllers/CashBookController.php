@@ -41,7 +41,7 @@ class CashBookController extends Controller
             "data" => cash_book::get()
 
 
-        ]);
+        ]); 
 
 
     }
