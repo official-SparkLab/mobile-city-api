@@ -106,3 +106,11 @@ Route::get('/searchAllEntry',[CashBookController::class,'index']);
 Route::get('/searchSingleEntry/{cash_book}',[CashBookController::class,'show']);
 Route::delete('/deleteEntry/{cash_book}',[CashBookController::class,'destroy']);
 Route::put('/createEntry/{id}',[CashBookController::class,'update']);
+
+
+//Purchase payable API
+Route::post('/addPurchasePayable',[PurchasePayableController::class,'store']);
+Route::get('/searchAllPayables',[PurchasePayableController::class,'index']);
+Route::get('/searchSinglePayable/{purchase_payable}',[PurchasePayableController::class,'show']);
+Route::delete('/deletePayableEntry/{purchase_payable}',[PurchasePayableController::class,'destroy']);
+
