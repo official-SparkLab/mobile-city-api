@@ -62,7 +62,7 @@ class BrandDetailsController extends Controller
      */
     public function update(Request $request, brand_details $brand_details)
     {
-        //
+        // 
     }
 
     /**
