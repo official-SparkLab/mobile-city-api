@@ -70,6 +70,13 @@ class BrandDetailsController extends Controller
      */
     public function destroy(brand_details $brand_details)
     {
-        //
+        $cash_book->delete();
+        return response()->json([
+            "message"=>"Entry Delete Successfully",
+            "status"=>"Success",
+            "data"=>brand_details::get()
+ 
+
+        ]);
     }
 }

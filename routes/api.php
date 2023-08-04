@@ -79,6 +79,8 @@ Route::put('/update_salesItems/{sales_items}/{invoice_no}',[SalesItemsController
 Route::post('/returnBrand',[BrandDetailsController::class,'store']);
 Route::get('/get_all_returnBrand',[BrandDetailsController::class,'index']);
 Route::get('/get_returnBrand/{brand_details}',[BrandDetailsController::class,'show']);
+Route::delete('/delete_returnBrand/{brand_details}',[BrandDetailsController::class,'destroy']);
+
 
 
 //Model Details API
