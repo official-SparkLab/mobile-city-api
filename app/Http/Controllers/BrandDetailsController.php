@@ -70,7 +70,7 @@ class BrandDetailsController extends Controller
      */
     public function destroy(brand_details $brand_details)
     {
-        $cash_book->delete();
+        $brand_details->delete();
         return response()->json([
             "message"=>"Entry Delete Successfully",
             "status"=>"Success",
