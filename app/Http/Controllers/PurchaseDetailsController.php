@@ -23,35 +23,35 @@ class PurchaseDetailsController extends Controller
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
-    {
-        $save=new Purchase_Details;
-        $save->invoice_no=$request->invoice_no;
-        $save->date=$request->date;
+{
+    $save = new Purchase_Details;
+    $save->invoice_no = $request->invoice_no;
+    $save->date = $request->date;
+    $save->supplier_name = $request->supplier_name;
+    $save->mobile_no = $request->mobile_no;
+    $save->address = $request->address;
+    $save->sub_total = $request->sub_total;
+    $save->balance_amount = $request->balance_amount;
+    $save->payable_amount = $request->payable_amount;
+    $save->payment_mode = $request->payment_mode;
+    $save->save();
 
-        $save->supplier_name=$request->supplier_name;
-        $save->mobile_no=$request->mobile_no;
-        $save->address=$request->address;
-
-        $save->sub_total=$request->sub_total;
-
-        $save->balance_amount=$request->balance_amount;
-
-        
-
-        $save->payable_amount=$request->payable_amount;
-
-        $save->payment_mode=$request->payment_mode;
-
+    // Check if a file was uploaded
+    if ($request->hasFile('file_upload')) {
+        $file = $request->file('file_upload');
+        $filename = time() . '_' . $file->getClientOriginalName();
+        $file->storeAs('public/files', $filename); // Store the uploaded file in the storage/app/public/files directory
+        $save->file_path = 'files/' . $filename;
         $save->save();
-
-        return response()->json([
-            'message' => 'Invoice Generated Successfully',
-            'status' => 'success',
-            'data' => Purchase_Details::get()
-
-        ]);
-
     }
+
+    return response()->json([
+        'message' => 'Invoice Generated Successfully',
+        'status' => 'success',
+        'data' => Purchase_Details::get()
+    ]);
+}
+
 
     /**
      * Display the specified resource.
