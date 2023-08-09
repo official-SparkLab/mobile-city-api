@@ -14,6 +14,8 @@ use App\Http\Controllers\ModelDetailsController;
 use App\Http\Controllers\CreateUsersController;
 use App\Http\Controllers\CashBookController;
 use App\Http\Controllers\PurchasePayableController;
+use App\Http\Controllers\Ladgers;
+
 
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
@@ -112,10 +114,17 @@ Route::delete('/deleteEntry/{cash_book}',[CashBookController::class,'destroy']);
 Route::put('/createEntry/{id}',[CashBookController::class,'update']);
 
 
-//Purchase payable API
+
 Route::post('/addPurchasePayable',[PurchasePayableController::class,'store']);
 Route::get('/searchAllPayables',[PurchasePayableController::class,'index']);
 Route::get('/searchSinglePayable/{purchase_payable}',[PurchasePayableController::class,'show']);
 Route::delete('/deletePayableEntry/{purchase_payable}',[PurchasePayableController::class,'destroy']);
 Route::put('/update_purchasePayable/{id}',[PurchasePayableController::class,'update']); 
+
+
+//Ledgers API
+Route::GET('/getSupplier',[Ladgers::class,'getSupplier']);
+Route::POST('/supplierLedger',[Ladgers::class,'index']);
+Route::POST('/generalLedger',[Ladgers::class,'GeneralLedger']);
+Route::POST('/cashbookLedger',[Ladgers::class,'ledgerCashBook']);
 
