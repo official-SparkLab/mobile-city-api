@@ -128,3 +128,11 @@ Route::POST('/supplierLedger',[Ladgers::class,'index']);
 Route::POST('/generalLedger',[Ladgers::class,'GeneralLedger']);
 Route::POST('/cashbookLedger',[Ladgers::class,'ledgerCashBook']);
 
+
+
+//Add Supplier API
+
+Route::post('/save_supplier',[AddSupplierController::class,'store']);
+Route::get('/get_all_supplier',[AddSupplierController::class,'index']);
+Route::get('/get_supplier/{add_supplier}',[AddSupplierController::class,'show']);
+Route::delete('/delete_supplier/{add_supplier}',[AddSupplierController::class,'destroy']);
