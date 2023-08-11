@@ -29,6 +29,8 @@ class SalesItemsController extends Controller
        
         $save->model_name=$request->model_name;
 
+        $save->color=$request->color;
+
         $save->imei=$request->imei;
 
         $save->price=$request->price;
@@ -62,6 +64,7 @@ class SalesItemsController extends Controller
     {
         $save=sales_items::where("id",$sales_items->id)->where("invoice_no",$invoice_no)->first();
         $save->model_name = $request->input('model_name');
+        $save->color = $request->input('color');
         $save->imei = $request->input('imei');
         $save->price = $request->input('price');
         $save->accessories = $request->input('accessories');

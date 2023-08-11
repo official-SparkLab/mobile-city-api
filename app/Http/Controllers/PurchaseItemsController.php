@@ -29,6 +29,8 @@ class PurchaseItemsController extends Controller
         
         $save->model_name=$request->model_name;
 
+        $save->color=$request->color;
+
         $save->imei=$request->imei;
 
         $save->purchase_price=$request->purchase_price;
@@ -69,6 +71,7 @@ class PurchaseItemsController extends Controller
         $save=Purchase_Items::where("id",$purchase_Items->id)->where("invoice_no",$invoice_no)->first();
 
         $save->model_name = $request->input('model_name');
+        $save->color = $request->input('color');
         $save->imei = $request->input('imei');
         $save->purchase_price = $request->input('purchase_price');
         $save->sale_price = $request->input('sale_price');

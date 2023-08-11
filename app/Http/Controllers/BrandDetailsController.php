@@ -29,6 +29,8 @@ class BrandDetailsController extends Controller
         
         $save->model_name=$request->model_name;
 
+        $save->color=$request->color;
+
         $save->imei=$request->imei;
 
         $save->price=$request->price;
