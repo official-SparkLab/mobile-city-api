@@ -56,9 +56,26 @@ class AddSupplierController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, add_supplier $add_supplier)
+    public function update(Request $request, $id)
     {
-        //
+        {
+            $save=add_supplier::where("id",$id)->first();
+            $save->supplier_name = $request->input('supplier_name');
+
+            $save->contact = $request->input('contact');
+
+            $save->address = $request->input('address');
+
+            
+            $save->save();
+    
+            return response()->json([
+                'message' => 'Supplier Updated Successfully',
+                'status' => 'success',
+                'data' => add_supplier::get()
+    
+            ]);
+        }
     }
 
     /**
