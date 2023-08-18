@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\purchase_Details;
 use Illuminate\Http\Request;
-
+use App\Models\Purchase_Items;
 class PurchaseDetailsController extends Controller
 {
     /**
@@ -50,6 +50,8 @@ class PurchaseDetailsController extends Controller
             'data' => Purchase_Details::get()
 
         ]);
+
+        
 
     }
 
