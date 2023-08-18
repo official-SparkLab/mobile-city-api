@@ -13,8 +13,6 @@ class PurchaseItemsController extends Controller
     public function index()
     {
         $search=DB::select("SELECT * FROM purchase__items WHERE imei NOT IN (SELECT imei FROM sales_items)");
-
-
         return response()->json([
             'message' => 'Fetch Data Successfully',
             'status' => 'success',
