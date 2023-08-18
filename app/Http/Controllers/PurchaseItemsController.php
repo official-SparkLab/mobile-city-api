@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Purchase_Items;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\DB;
 class PurchaseItemsController extends Controller
 {
     /**
