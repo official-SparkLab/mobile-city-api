@@ -139,3 +139,9 @@ Route::get('/get_all_supplier',[AddSupplierController::class,'index']);
 Route::get('/get_supplier/{add_supplier}',[AddSupplierController::class,'show']);
 Route::delete('/delete_supplier/{add_supplier}',[AddSupplierController::class,'destroy']);
 Route::put('/update_supplier/{id}',[AddSupplierController::class,'update']); 
+
+
+//Purchase Report  and Sales Report API
+Route::GET('/getPurchaseReport/{date1}/{date2}',[Ladgers::class,'purchaseReport']);
+
+

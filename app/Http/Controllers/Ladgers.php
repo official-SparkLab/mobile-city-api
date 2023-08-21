@@ -94,7 +94,7 @@ class Ladgers extends Controller
     public function getSupplier(){
         $post=DB::select("
         SELECT supplier_name, mobile_no, address
-FROM purchase__details 
+        FROM purchase__details      
 
         ");
 
@@ -105,6 +105,27 @@ FROM purchase__details
     
             ]);
     }
+
+    public function purchaseReport($date1,$date2)
+    {
+        $post=DB::select("
+        select * from purchase__items where invoice_no in (select invoice_no from purchase__details where date between '".$date1."' and '".$date2."');
+
+        ");
+
+        return response()->json([
+            "message" => "Data Fetched successfully",
+            "status" => "Success",
+            "data" => $post
+    
+            ]);
+    }
+
+
+
+    
+
+
 
 
 }
