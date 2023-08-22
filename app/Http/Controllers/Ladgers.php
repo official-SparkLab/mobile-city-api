@@ -122,6 +122,21 @@ class Ladgers extends Controller
     }
 
 
+    public function salesReport($date1,$date2)
+    {
+        $post=DB::select("
+        select * from sales_items where invoice_no in (select invoice_no from sales__details where date between '".$date1."' and '".$date2."');
+        ");
+
+        return response()->json([
+            "message" => "Data Fetched successfully",
+            "status" => "Success",
+            "data" => $post
+    
+            ]);
+    }
+
+
 
     
 
