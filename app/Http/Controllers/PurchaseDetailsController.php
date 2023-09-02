@@ -19,6 +19,13 @@ class PurchaseDetailsController extends Controller
         ]);
     }
 
+    public function upload(Request $request)
+    {
+        
+        
+        
+    }
+
     /**
      * Store a newly created resource in storage.
      */
@@ -42,6 +49,22 @@ class PurchaseDetailsController extends Controller
 
         $save->payment_mode=$request->payment_mode;
 
+        if ($request->hasFile('file')) {
+            $file = $request->file('file');
+            
+            // Generate a unique filename using the current date and time
+            $currentDateTime = now()->format('YmdHis');
+            $fileName = $currentDateTime . '_' . $file->getClientOriginalName();
+            
+            // Move the file to the 'Images' folder with the new filename
+            $file->move('Images', $fileName);
+            
+            return response()->json(['message' => 'File uploaded successfully', 'file_name' => $fileName]);
+        } else {
+            return response()->json(['message' => 'No file uploaded'], 400);
+        }
+
+        
         $save->save();
 
         return response()->json([

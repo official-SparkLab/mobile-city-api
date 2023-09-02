@@ -145,3 +145,4 @@ Route::put('/update_supplier/{id}',[AddSupplierController::class,'update']);
 Route::GET('/getPurchaseReport/{date1}/{date2}',[Ladgers::class,'purchaseReport']);
 Route::GET('/getSalesReport/{date1}/{date2}',[Ladgers::class,'salesReport']);
 
+Route::POST('/upload',[PurchaseDetailsController::class,'upload']);
