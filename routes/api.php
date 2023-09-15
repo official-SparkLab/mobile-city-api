@@ -141,8 +141,8 @@ Route::delete('/delete_supplier/{add_supplier}',[AddSupplierController::class,'d
 Route::put('/update_supplier/{id}',[AddSupplierController::class,'update']); 
 
 
-//Purchase Report  and Sales Report API
+//Purchase Report  and Sales Report APIs
 Route::GET('/getPurchaseReport/{date1}/{date2}',[Ladgers::class,'purchaseReport']);
 Route::GET('/getSalesReport/{date1}/{date2}',[Ladgers::class,'salesReport']);
-
+    
 Route::POST('/upload',[PurchaseDetailsController::class,'upload']);
