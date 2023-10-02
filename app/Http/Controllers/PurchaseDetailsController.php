@@ -43,8 +43,6 @@ class PurchaseDetailsController extends Controller
 
         $save->balance_amount=$request->balance_amount;
 
-        
-
         $save->payable_amount=$request->payable_amount;
 
         $save->payment_mode=$request->payment_mode;
@@ -58,8 +56,9 @@ class PurchaseDetailsController extends Controller
             
             // Move the file to the 'Images' folder with the new filename
             $file->move('Images', $fileName);
+            $save->file=$fileName;
             
-            return response()->json(['message' => 'File uploaded successfully', 'file_name' => $fileName]);
+           
         } else {
             return response()->json(['message' => 'No file uploaded'], 400);
         }
