@@ -54,7 +54,7 @@ class PurchaseItemsController extends Controller
             'data' => Purchase_Items::get()
 
         ]);
-    }
+    } 
         else{
             return response()->json([
                 'message' => 'IMEI No Already Exist Please Chenge The IMEI No',

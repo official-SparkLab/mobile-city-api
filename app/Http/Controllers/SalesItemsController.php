@@ -51,7 +51,7 @@ class SalesItemsController extends Controller
             'data' => sales_items::get()
 
         ]);
-    }
+    } 
     else{
         return response()->json([
             'message' => 'IMEI No Already Exist Please Chenge The IMEI No',

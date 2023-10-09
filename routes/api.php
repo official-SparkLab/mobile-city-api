@@ -69,7 +69,7 @@ Route::put('/delete_salesDetails/{invoice_no}',[SalesDetailsController::class,'d
 Route::put('/update_salesDetails/{invoice_no}',[SalesDetailsController::class,'update']); 
 Route::get('/get_SalesInvoice/{invoice_no}',[SalesDetailsController::class,'getInvoice']);   
 
-
+ 
 
 //Sales Items API
 Route::post('/sales_items',[SalesItemsController::class,'store']);
