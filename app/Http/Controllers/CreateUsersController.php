@@ -31,7 +31,7 @@ class CreateUsersController extends Controller
             ['email','=',$request->email],
 
         ])->first();
-
+ 
         if(!$check)
         {
         $save=new Create_Users;

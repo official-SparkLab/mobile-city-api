@@ -27,9 +27,9 @@ class AddSupplierController extends Controller
     {
         $check=add_supplier::where([
             ['contact','=',$request->contact],
-
+ 
         ])->first();
-
+ 
         if(!$check)
         {
         $save=new add_supplier;
