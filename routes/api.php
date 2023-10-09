@@ -144,5 +144,7 @@ Route::put('/update_supplier/{id}',[AddSupplierController::class,'update']);
 //Purchase Report  and Sales Report APIs
 Route::GET('/getPurchaseReport/{date1}/{date2}',[Ladgers::class,'purchaseReport']);
 Route::GET('/getSalesReport/{date1}/{date2}',[Ladgers::class,'salesReport']);
-    
+  
+
+//Photo Upload
 Route::POST('/upload',[PurchaseDetailsController::class,'upload']);
