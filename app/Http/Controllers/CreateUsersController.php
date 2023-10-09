@@ -27,6 +27,13 @@ class CreateUsersController extends Controller
      */
     public function store(Request $request)
     {
+        $check=Create_Users::where([
+            ['email','=',$request->email],
+
+        ])->first();
+
+        if(!$check)
+        {
         $save=new Create_Users;
         $save->full_name=$request->full_name;
         $save->gender=$request->gender;
@@ -42,6 +49,16 @@ class CreateUsersController extends Controller
             'data' => Create_Users::get()
         ]);
     }
+    else{
+        return response()->json([
+            'message' => 'E-mail ID Already Exist Please Chenge The E-mail ID',
+            'status' => 'Failed',
+            'data' => Create_Users::get()
+        ]);
+    }
+
+}
+    
 
     /**
      * Display the specified resource.

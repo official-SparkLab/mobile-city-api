@@ -25,6 +25,13 @@ class AddSupplierController extends Controller
      */
     public function store(Request $request)
     {
+        $check=add_supplier::where([
+            ['contact','=',$request->contact],
+
+        ])->first();
+
+        if(!$check)
+        {
         $save=new add_supplier;
         $save->supplier_name = $request->supplier_name;
         $save->contact=$request->contact;
@@ -38,6 +45,15 @@ class AddSupplierController extends Controller
             'data' =>add_supplier::get()
         ]);
     }
+    else{
+        return response()->json([
+            'message' => 'Contact No Already Exist Please Chenge The Contact No',
+            'status' => 'Failed',
+            'data' => add_supplier::get()
+        ]);
+    }
+
+}
 
     /**
      * Display the specified resource.
