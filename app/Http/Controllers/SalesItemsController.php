@@ -24,6 +24,13 @@ class SalesItemsController extends Controller
      */
     public function store(Request $request)
     {
+        $check=sales_items::where([
+            ['imei','=',$request->imei],
+
+        ])->first();
+
+        if(!$check)
+        {
         $save=new sales_items;
         $save->invoice_no=$request->invoice_no;
        
@@ -45,6 +52,15 @@ class SalesItemsController extends Controller
 
         ]);
     }
+    else{
+        return response()->json([
+            'message' => 'IMEI No Already Exist Please Chenge The IMEI No',
+            'status' => 'Failed',
+            'data' => sales_items::get()
+        ]);
+    }
+
+}
 
     /**
      * Display the specified resource.

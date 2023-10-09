@@ -102,7 +102,7 @@ class PurchaseDetailsController extends Controller
             {
             $save->date = $request->input('date');    
             $save->supplier_name = $request->input('supplier_name');
-            $save->mobile_no = $request->input('mobile_no');
+            $save->mobile_no = $request->input('mobile_no'); 
             $save->address = $request->input('address');
             $save->sub_total = $request->input('sub_total');
             $save->balance_amount = $request->input('balance_amount');

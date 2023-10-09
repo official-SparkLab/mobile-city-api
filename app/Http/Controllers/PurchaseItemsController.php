@@ -20,11 +20,18 @@ class PurchaseItemsController extends Controller
         ]);
     }
 
-    /**
+    /** 
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
     {
+        $check=Purchase_Items::where([
+            ['imei','=',$request->imei],
+
+        ])->first();
+
+        if(!$check)
+        {
         $save=new Purchase_Items;
         $save->invoice_no=$request->invoice_no;
         
@@ -47,8 +54,14 @@ class PurchaseItemsController extends Controller
             'data' => Purchase_Items::get()
 
         ]);
-
-
+    }
+        else{
+            return response()->json([
+                'message' => 'IMEI No Already Exist Please Chenge The IMEI No',
+                'status' => 'Failed',
+                'data' => Purchase_Items::get()
+            ]);
+        }
 
     }
 
