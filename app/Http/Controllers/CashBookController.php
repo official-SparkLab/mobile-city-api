@@ -33,7 +33,7 @@ class CashBookController extends Controller
         $save->debit_amount=$request->debit_amount;
         $save->payment_mode=$request->payment_mode;
         $save->note=$request->note;
-        $save->save();
+        $save->save(); 
 
         return response()->json([
             "message" =>"Entry Added Successfully",
