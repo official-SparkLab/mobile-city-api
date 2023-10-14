@@ -16,6 +16,8 @@ use App\Http\Controllers\CashBookController;
 use App\Http\Controllers\PurchasePayableController;
 use App\Http\Controllers\Ladgers;
 use App\Http\Controllers\AddSupplierController;
+use App\Http\Controllers\ExpenseDetailsController;
+
 
 
 
@@ -148,3 +150,12 @@ Route::GET('/getSalesReport/{date1}/{date2}',[Ladgers::class,'salesReport']);
 
 //Photo Upload
 Route::POST('/upload',[PurchaseDetailsController::class,'upload']);
+
+
+
+//Expense Details
+Route::post('/save_expense',[ExpenseDetailsController::class,'store']);
+Route::get('/get_allExpenseList',[ExpenseDetailsController::class,'index']);
+Route::get('/get_expense/{expenseDetails}',[ExpenseDetailsController::class,'show']);
+Route::delete('/delete_expenseEntry/{expenseDetails}',[ExpenseDetailsController::class,'destroy']);
+Route::put('/update_expenseEntry/{id}',[ExpenseDetailsController::class,'update']); 
