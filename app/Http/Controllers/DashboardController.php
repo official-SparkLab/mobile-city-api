@@ -18,6 +18,11 @@ class DashboardController extends Controller
             ->where('purchase__details.date', $date)
             ->count();
 
+        $sumOfColumn = DB::table('purchase__details')
+            ->join('purchase__items', 'purchase__details.invoice_no', '=', 'purchase__items.invoice_no')
+            ->where('purchase__details.date', $date)
+            ->sum('purchase_price'); 
+
             $post=DB::select("
             select purchase__items.* from purchase__details inner join purchase__items ON purchase__details.invoice_no=purchase__items.invoice_no where purchase__details.date='".$date."';
     
@@ -27,6 +32,7 @@ class DashboardController extends Controller
             "message" => "Data Fetched successfully",
             "status" => "Success",
             "purchaseCount" => $count,
+            "purchaseTotal" => $sumOfColumn,
             "data" => $post
         ]);
         
@@ -41,6 +47,11 @@ class DashboardController extends Controller
             ->where('sales__details.date', $date)
             ->count();
 
+        $sumOfColumn = DB::table('sales__details')
+        ->join('sales_items', 'sales__details.invoice_no', '=', 'sales_items.invoice_no')
+        ->where('sales__details.date', $date)
+        ->sum('price');    
+
             $post=DB::select("
             select sales_items.* from sales__details inner join sales_items ON sales__details.invoice_no=sales_items.invoice_no where sales__details.date='".$date."';
     
@@ -50,6 +61,7 @@ class DashboardController extends Controller
             "message" => "Data Fetched successfully",
             "status" => "Success",
             "salesCount" => $count,
+            "salesTotal" => $sumOfColumn,
             "data" => $post
         ]);
         
