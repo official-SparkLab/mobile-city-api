@@ -17,6 +17,7 @@ use App\Http\Controllers\PurchasePayableController;
 use App\Http\Controllers\Ladgers;
 use App\Http\Controllers\AddSupplierController;
 use App\Http\Controllers\ExpenseDetailsController;
+use App\Http\Controllers\DashboardController;
 
 
 
@@ -159,3 +160,8 @@ Route::get('/get_allExpenseList',[ExpenseDetailsController::class,'index']);
 Route::get('/get_expense/{expenseDetails}',[ExpenseDetailsController::class,'show']);
 Route::delete('/delete_expenseEntry/{expenseDetails}',[ExpenseDetailsController::class,'destroy']);
 Route::put('/update_expenseEntry/{id}',[ExpenseDetailsController::class,'update']); 
+
+
+//Dashboard API
+Route::get('/getPurchaseCount',[DashboardController::class,'index']);
+Route::get('/getSalesCount',[DashboardController::class,'salesDetailsCount']);
