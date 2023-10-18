@@ -47,7 +47,7 @@ class DashboardController extends Controller
             ->where('sales__details.date', $date)
             ->count();
 
-        $sumOfColumn = DB::table('sales__details')
+        $todaySellTotal = DB::table('sales__details')
         ->join('sales_items', 'sales__details.invoice_no', '=', 'sales_items.invoice_no')
         ->where('sales__details.date', $date)
         ->sum('price');
@@ -56,18 +56,18 @@ class DashboardController extends Controller
          $yesSell = DB::table('sales__details')
          ->join('sales_items', 'sales__details.invoice_no', '=', 'sales_items.invoice_no')
          ->where('sales__details.date', $yDate)
-         ->sum('price');
+         ->count();
 
             $post=DB::select("
-            SELECT sales_items.*, brand_details.model_name as buy_model,brand_details.color as buy_color,brand_details.imei as buy_imei,brand_details.price as buy_price FROM sales__details left JOIN sales_items ON sales__details.invoice_no = sales_items.invoice_no LEFT JOIN brand_details ON sales__details.invoice_no = brand_details.invoice_no WHERE sales__details.date='2023-10-17';
+            SELECT sales_items.*, brand_details.model_name as buy_model,brand_details.color as buy_color,brand_details.imei as buy_imei,brand_details.price as buy_price FROM sales__details left JOIN sales_items ON sales__details.invoice_no = sales_items.invoice_no LEFT JOIN brand_details ON sales__details.invoice_no = brand_details.invoice_no WHERE sales__details.date='".$date."';
     
             ");    
         
         return response()->json([
             "message" => "Data Fetched successfully",
             "status" => "Success",
-            "salesCount" => $count,
-            "salesTotal" => $sumOfColumn,
+            "todaySelleCount" => $count,
+            "todaySellTotal" => $todaySellTotal,
             "yesterdaySell" => $yesSell,
             "data" => $post
         ]);
@@ -83,7 +83,7 @@ class DashboardController extends Controller
             ->where('sales__details.date', $date)
             ->count();
 
-        $sumOfColumn = DB::table('sales__details')
+        $todayBuyTotal = DB::table('sales__details')
         ->join('brand_details', 'sales__details.invoice_no', '=', 'brand_details.invoice_no')
         ->where('sales__details.date', $date)
         ->sum('price');
@@ -102,8 +102,8 @@ class DashboardController extends Controller
         return response()->json([
             "message" => "Data Fetched successfully",
             "status" => "Success",
-            "buyBackCount" => $count,
-            "buyBackTotal" => $sumOfColumn,
+            "todayBuyBackCount" => $count,
+            "todayBuyBackTotal" => $todayBuyTotal,
             "yesterdaybuyBack" => $yesSell,
             "data" => $post
         ]);
