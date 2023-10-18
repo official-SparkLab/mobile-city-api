@@ -78,6 +78,7 @@ class DashboardController extends Controller
     {
            
         $date = date('Y-m-d');
+        $yDate=date("Y-m-d", strtotime("yesterday"));
         $count = DB::table('sales__details')
             ->join('brand_details', 'sales__details.invoice_no', '=', 'brand_details.invoice_no')
             ->where('sales__details.date', $date)
@@ -87,8 +88,13 @@ class DashboardController extends Controller
         ->join('brand_details', 'sales__details.invoice_no', '=', 'brand_details.invoice_no')
         ->where('sales__details.date', $date)
         ->sum('price');
+
+        $yesterdayBuyCount = DB::table('sales__details')
+        ->join('brand_details', 'sales__details.invoice_no', '=', 'brand_details.invoice_no')
+        ->where('sales__details.date', $yDate)
+        ->count();
         
-        $yDate=date("Y-m-d", strtotime("yesterday"));
+        
          $yesSell = DB::table('sales__details')
          ->join('brand_details', 'sales__details.invoice_no', '=', 'brand_details.invoice_no')
          ->where('sales__details.date', $yDate)
@@ -104,6 +110,7 @@ class DashboardController extends Controller
             "status" => "Success",
             "todayBuyBackCount" => $count,
             "todayBuyBackTotal" => $todayBuyTotal,
+            "yesterdayBuyCount" => $yesterdayBuyCount,
             "yesterdaybuyBack" => $yesSell,
             "data" => $post
         ]);
