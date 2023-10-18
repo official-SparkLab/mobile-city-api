@@ -50,10 +50,16 @@ class DashboardController extends Controller
         $sumOfColumn = DB::table('sales__details')
         ->join('sales_items', 'sales__details.invoice_no', '=', 'sales_items.invoice_no')
         ->where('sales__details.date', $date)
-        ->sum('price');    
+        ->sum('price');
+        
+        $yDate=date("Y-m-d", strtotime("yesterday"));
+         $yesSell = DB::table('sales__details')
+         ->join('sales_items', 'sales__details.invoice_no', '=', 'sales_items.invoice_no')
+         ->where('sales__details.date', $yDate)
+         ->sum('price');
 
             $post=DB::select("
-            select sales_items.* from sales__details inner join sales_items ON sales__details.invoice_no=sales_items.invoice_no where sales__details.date='".$date."';
+            SELECT sales_items.*, brand_details.model_name as buy_model,brand_details.color as buy_color,brand_details.imei as buy_imei,brand_details.price as buy_price FROM sales__details left JOIN sales_items ON sales__details.invoice_no = sales_items.invoice_no LEFT JOIN brand_details ON sales__details.invoice_no = brand_details.invoice_no WHERE sales__details.date='2023-10-17';
     
             ");    
         
@@ -62,9 +68,45 @@ class DashboardController extends Controller
             "status" => "Success",
             "salesCount" => $count,
             "salesTotal" => $sumOfColumn,
+            "yesterdaySell" => $yesSell,
             "data" => $post
         ]);
         
+    }
+
+    public function buyBack()
+    {
+           
+        $date = date('Y-m-d');
+        $count = DB::table('sales__details')
+            ->join('brand_details', 'sales__details.invoice_no', '=', 'brand_details.invoice_no')
+            ->where('sales__details.date', $date)
+            ->count();
+
+        $sumOfColumn = DB::table('sales__details')
+        ->join('brand_details', 'sales__details.invoice_no', '=', 'brand_details.invoice_no')
+        ->where('sales__details.date', $date)
+        ->sum('price');
+        
+        $yDate=date("Y-m-d", strtotime("yesterday"));
+         $yesSell = DB::table('sales__details')
+         ->join('brand_details', 'sales__details.invoice_no', '=', 'brand_details.invoice_no')
+         ->where('sales__details.date', $yDate)
+         ->sum('price');
+
+            $post=DB::select("
+            select brand_details.* from sales__details inner join brand_details ON sales__details.invoice_no=brand_details.invoice_no where sales__details.date='".$date."';
+    
+            ");    
+        
+        return response()->json([
+            "message" => "Data Fetched successfully",
+            "status" => "Success",
+            "buyBackCount" => $count,
+            "buyBackTotal" => $sumOfColumn,
+            "yesterdaybuyBack" => $yesSell,
+            "data" => $post
+        ]);
     }
 
     /**

@@ -165,3 +165,4 @@ Route::put('/update_expenseEntry/{id}',[ExpenseDetailsController::class,'update'
 //Dashboard API
 Route::get('/getPurchaseCount',[DashboardController::class,'index']);
 Route::get('/getSalesCount',[DashboardController::class,'salesDetailsCount']);
+Route::get('/getBuyBack',[DashboardController::class,'buyBack']);
