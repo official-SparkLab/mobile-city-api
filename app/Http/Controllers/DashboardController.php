@@ -116,6 +116,28 @@ class DashboardController extends Controller
         ]);
     }
 
+    public function SellDetails() {
+        $date = date('Y-m-d');
+        $todaysSell = DB::table('sales_items')
+            ->join('sales__details', 'sales__details.invoice_no', '=', 'sales_items.invoice_no')
+            ->where('sales__details.date', $date)
+            ->sum('sales_items.price');
+        
+        $todaysProfit = DB::table('purchase__items')
+            ->join('sales_items', 'purchase__items.imei', '=', 'sales_items.imei')
+            ->join('sales__details', 'sales_items.invoice_no', '=', 'sales__details.invoice_no')
+            ->where('sales__details.date', $date)
+            ->sum(DB::raw('sales_items.price - purchase__items.purchase_price'));
+        
+        return response()->json([
+            "message" => "Today's sales total fetched successfully",
+            "status" => "Success",
+            "todaysSell" => $todaysSell,
+            "todaysProfit"=>$todaysProfit
+        ]);
+        
+    }
+
     /**
      * Show the form for creating a new resource.
      */

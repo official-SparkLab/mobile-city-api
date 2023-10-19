@@ -166,3 +166,6 @@ Route::put('/update_expenseEntry/{id}',[ExpenseDetailsController::class,'update'
 Route::get('/getPurchaseCount',[DashboardController::class,'index']);
 Route::get('/getSalesCount',[DashboardController::class,'salesDetailsCount']);
 Route::get('/getBuyBack',[DashboardController::class,'buyBack']);
+Route::get('/getSellsDetails',[DashboardController::class,'SellDetails']);
+
+
