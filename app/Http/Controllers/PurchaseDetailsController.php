@@ -60,7 +60,7 @@ class PurchaseDetailsController extends Controller
             
            
         } else {
-            return response()->json(['message' => 'No file uploaded'], 400);
+            // return response()->json(['message' => 'No file uploaded'], 400);
         }
 
         
