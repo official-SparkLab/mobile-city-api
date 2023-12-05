@@ -18,6 +18,7 @@ use App\Http\Controllers\Ladgers;
 use App\Http\Controllers\AddSupplierController;
 use App\Http\Controllers\ExpenseDetailsController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\CustomerEnquiryController;
 
 
 
@@ -167,5 +168,12 @@ Route::get('/getPurchaseCount',[DashboardController::class,'index']);
 Route::get('/getSalesCount',[DashboardController::class,'salesDetailsCount']);
 Route::get('/getBuyBack',[DashboardController::class,'buyBack']);
 Route::get('/getSellsDetails',[DashboardController::class,'SellDetails']);
+
+
+
+//Enquiry API
+Route::post('/save_en',[CustomerEnquiryController::class,'store']);
+Route::get('/get_allEnquiryList',[CustomerEnquiryController::class,'index']);
+
 
 
