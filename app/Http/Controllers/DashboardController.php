@@ -138,6 +138,11 @@ class DashboardController extends Controller
         
     }
 
+    public function Stock()
+    {
+        
+    }
+
     /**
      * Show the form for creating a new resource.
      */

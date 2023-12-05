@@ -62,7 +62,7 @@ class ExpenseDetailsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        {
+        
             $save=ExpenseDetails::where("id",$id)->first();
             $save->expense_name = $request->input('expense_name');
 
@@ -83,7 +83,7 @@ class ExpenseDetailsController extends Controller
                 'data' => ExpenseDetails::get()
     
             ]);
-        }
+        
     }
 
     /**

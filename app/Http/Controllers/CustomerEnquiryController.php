@@ -12,7 +12,13 @@ class CustomerEnquiryController extends Controller
      */
     public function index()
     {
-        //
+        return response()->json([
+            "message" =>"Entry Added Successfully",
+            "status" =>"Success",
+            "data" => CustomerEnquiry::get()
+
+
+        ]);
     }
 
     /**
@@ -20,7 +26,7 @@ class CustomerEnquiryController extends Controller
      */
     public function store(Request $request)
     {
-        $save=new EnquiryDetails;
+        $save=new CustomerEnquiry;
         $save->customer_name=$request->customer_name;
         $save->contact_number=$request->contact_number;
         $save->date=$request->date;
@@ -30,7 +36,7 @@ class CustomerEnquiryController extends Controller
         return response()->json([
             "message" =>"Entry Added Successfully",
             "status" =>"Success",
-            "data" => EnquiryDetails::get()
+            "data" => CustomerEnquiry::get()
 
 
         ]);
@@ -41,15 +47,40 @@ class CustomerEnquiryController extends Controller
      */
     public function show(CustomerEnquiry $customerEnquiry)
     {
-        //
+        return response()->json([
+            "message"=>"Entry Added Successfully",
+            "status"=>"Success",
+            "data"=>$customerEnquiry
+
+
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, CustomerEnquiry $customerEnquiry)
+    public function update(Request $request, $id)
     {
-        //
+        
+            $save=CustomerEnquiry::where("id",$id)->first();
+            $save->customer_name = $request->input('customer_name');
+
+            $save->contact_number = $request->input('contact_number');
+
+            $save->date = $request->input('date');
+
+            $save->model_name = $request->input('model_name');
+
+
+            $save->save();
+    
+            return response()->json([
+                'message' => 'Model Updated Successfully',
+                'status' => 'success',
+                'data' => CustomerEnquiry::get()
+    
+            ]);
+        
     }
 
     /**
@@ -57,6 +88,13 @@ class CustomerEnquiryController extends Controller
      */
     public function destroy(CustomerEnquiry $customerEnquiry)
     {
-        //
+        $customerEnquiry->delete();
+        return response()->json([
+            "message"=>"Entry Delete Successfully",
+            "status"=>"Success",
+            "data"=>customerEnquiry::get()
+ 
+
+        ]);
     }
 }
