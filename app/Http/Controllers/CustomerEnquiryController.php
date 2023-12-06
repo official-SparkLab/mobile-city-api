@@ -56,12 +56,9 @@ class CustomerEnquiryController extends Controller
         ]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
+ 
     public function update(Request $request, $id)
     {
-        
             $save=CustomerEnquiry::where("id",$id)->first();
             $save->customer_name = $request->input('customer_name');
 
