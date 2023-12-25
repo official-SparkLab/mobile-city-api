@@ -116,6 +116,22 @@ class DashboardController extends Controller
         ]);
     }
 
+    public function getPurchasePayablePendingAmount($mobileNo) {
+       
+
+        $pendingAmount=DB::select("
+        SELECT((SELECT SUM(balance_amount) FROM purchase__details WHERE mobile_no='".$mobileNo."') - (SELECT SUM(paid_amount) FROM purchase_payables WHERE mobile_no='".$mobileNo."')) as pendingAmount;
+        ");
+    
+        return response()->json([
+            "message" => "Purchase Payable Amount Searched",
+            "status" => "Success",
+            "purchasePayablePendingAmount" => $pendingAmount,
+        ]);
+    }
+    
+    
+
     public function SellDetails() {
         $date = date('Y-m-d');
        

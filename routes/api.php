@@ -168,6 +168,7 @@ Route::get('/getPurchaseCount',[DashboardController::class,'index']);
 Route::get('/getSalesCount',[DashboardController::class,'salesDetailsCount']);
 Route::get('/getBuyBack',[DashboardController::class,'buyBack']);
 Route::get('/getSellsDetails',[DashboardController::class,'SellDetails']);
+Route::get('/getPurchasePayablePendingAmount/{mobile_no}',[DashboardController::class,'getPurchasePayablePendingAmount']);
 
 
 
