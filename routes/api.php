@@ -174,6 +174,7 @@ Route::get('/getSellsDetails',[DashboardController::class,'SellDetails']);
 //Enquiry API
 Route::POST('/save_enquiry',[CustomerEnquiryController::class,'store']);
 Route::get('/get_allEnquiryList',[CustomerEnquiryController::class,'index']);
+Route::get('/searchEnquiry/{customerEnquiry}',[CustomerEnquiryController::class,'show']);
 Route::put('/update_enquiry/{id}',[CustomerEnquiryController::class,'update']); 
 Route::delete('/delete_enquiry/{customerEnquiry}',[CustomerEnquiryController::class,'destroy']);
 
