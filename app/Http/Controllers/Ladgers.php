@@ -93,8 +93,8 @@ class Ladgers extends Controller
 
     public function getSupplier(){
         $post=DB::select("
-        SELECT supplier_name, mobile_no, address
-        FROM purchase__details      
+        SELECT supplier_name, contact, address
+        FROM add_suppliers      
 
         ");
 
